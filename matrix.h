@@ -14,8 +14,12 @@ typedef struct Matrix
     int numColumns;
 } Matrix;
 
-Matrix createEmptyMatrix(int numRows, int numColumns);
+Matrix* createEmptyMatrix(int numRows, int numColumns);
 void randomizeMatrix(Matrix* m);
+Matrix* createRandomMatrix(int numRows, int numColumns);
+Matrix* addMatrices(Matrix* a, Matrix* b);
+Matrix* subMatrices(Matrix* a, Matrix* b);
+Matrix* multiplyMatrices(Matrix* a, Matrix* b);
 void displayMatrix(Matrix* m);
 void freeMatrix(Matrix* m);
 

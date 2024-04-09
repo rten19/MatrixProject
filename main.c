@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <time.h>
+#include <unistd.h>
 #include "matrix.c"
 
 /*
@@ -6,14 +8,43 @@
 */
 int main()
 {
-    printf("Initializing empty 5x5 matrix m1...\n");
-    Matrix m1 = createEmptyMatrix(5, 5);
-    displayMatrix(&m1);
+    srand(time(NULL));
+    
+    Matrix* a = createRandomMatrix(4, 4);
+    Matrix* b = createRandomMatrix(4, 4);
+    Matrix* c = createRandomMatrix(3, 5);
+    Matrix* d = createRandomMatrix(5, 3);
+
+    printf("Matrix A:\n");
+    displayMatrix(a);
     printf("\n");
 
-    printf("Randomizing matrix m1...\n");
-    randomizeMatrix(&m1);
-    displayMatrix(&m1);
+    printf("Matrix B:\n");
+    displayMatrix(b);
+    printf("\n");
+
+    Matrix* sum = addMatrices(a, b);
+    printf("Result of A + B:\n");
+    displayMatrix(sum);
+    printf("\n");
+
+    Matrix* diff = subMatrices(a, b);
+    printf("Result of A - B:\n");
+    displayMatrix(diff);
+    printf("\n");
+
+    printf("Matrix C:\n");
+    displayMatrix(c);
+    printf("\n");
+
+    printf("Matrix D:\n");
+    displayMatrix(d);
+    printf("\n");
+
+    Matrix* product = multiplyMatrices(c, d);
+    printf("Result of C x D:\n");
+    displayMatrix(product);
+    printf("\n");
 
     return 0;
 }
